@@ -46,7 +46,7 @@ public class Fraction {
 		return HCF;
 	}
 
-	public int findLCM(int a, int b) {
+	private int findLCM(int a, int b) {
 		if (a == b) {
 			return a;
 		}
