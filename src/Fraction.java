@@ -54,6 +54,7 @@ public class Fraction {
 		return (a * b) / HCF;
 	}
 
+	//Method to get the simplest form of fraction
 	public Fraction simplify() {
 		int num = this.numerator;
 		int den = this.denominator;
@@ -118,6 +119,7 @@ public class Fraction {
 
 	// Is equal
 	public int hashCode() {
+		this.simplify();
 		return Objects.hash(numerator, denominator);
 	}
 
@@ -136,15 +138,20 @@ public class Fraction {
 
 	// Compare to
 	public int compareTo(Fraction f2) {
+		this.simplify();
 		int num1 = this.numerator;
 		int den1 = this.denominator;
+		f2.simplify();
 		int num2 = f2.getNumerator();
 		int den2 = f2.getDenominator();
 		int lcm = findLCM(den1, den2);
-		if (num1 * (lcm / den1) <= num2 * (lcm / den2)) {
+		if (num1 * (lcm / den1) < num2 * (lcm / den2)) {
 			return -1;
 		}
-		return 1;
+		else if(num1 * (lcm / den1) > num2 * (lcm / den2)) {
+			return 1;
+		}
+		return 0;
 	}
 
 	// Displaying Fraction
